@@ -4,19 +4,23 @@ const pageRouter = Router()
 const fs = require('fs-extra')
 
 pageRouter
-.get('/',(req, res)=>{
-  fs.readFile(`${__dirname}/../views/home.html`, 'utf-8')
-  .then((htmlData)=>{
-    res.send(htmlData)
-  })
+.get('/' ,(req, res)=>{
+
+  res.render('home.ejs')
 })
 
 pageRouter
 .get('/about',(req, res)=>{
-  fs.readFile(`${__dirname}/../views/about.html`, 'utf-8')
-  .then((htmlData)=>{
-    res.send(htmlData)
-  })
+
+    res.render('about.ejs')
+
+})
+
+pageRouter
+.get('/nosorry',(req, res)=>{
+
+    res.render('404.ejs')
+
 })
 
 module.exports = pageRouter
