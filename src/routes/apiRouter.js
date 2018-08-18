@@ -65,5 +65,16 @@ apiRouter.get('/companies', (req, res)=>{
     }
   ])
 })
+// data
 
+apiRouter.get('companies/:_id',(req, res)=>{
+  const db = req.app.locals.db
+  const idInRoute = req.params._id
+
+  db.select('*').from('companies')
+  .where('id', '=', idInRoute)
+  .then((records)=>{
+    res.json(records)
+  })
+})
 module.exports = apiRouter
